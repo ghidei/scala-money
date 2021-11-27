@@ -1,6 +1,5 @@
 target/
 .sbtopts
-project
 project/project
 project/.sbt
 test-output/
