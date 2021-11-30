@@ -1,8 +1,8 @@
 package com.ghidei.money
 
-import io.circe.{Encoder, Error, Decoder, DecodingFailure}
 import io.circe.parser._
 import io.circe.syntax.EncoderOps
+import io.circe.{Decoder, DecodingFailure, Encoder, Error}
 import munit._
 
 class JsonSuite extends FunSuite {

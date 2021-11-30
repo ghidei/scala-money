@@ -1,13 +1,12 @@
 package com.ghidei.money
 
 import cats.implicits.catsSyntaxEither
-import com.ghidei.money.CurrencyError._
 import com.ghidei.money.Currency._
+import com.ghidei.money.CurrencyError._
 import io.circe._
 
 import java.text.NumberFormat
-import java.util.Locale
-import java.util.{Currency => JavaCurrency}
+import java.util.{Currency => JavaCurrency, Locale}
 import scala.math.BigDecimal.RoundingMode.RoundingMode
 import scala.util.Try
 

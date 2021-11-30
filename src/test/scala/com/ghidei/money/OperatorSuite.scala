@@ -4,7 +4,6 @@ import com.ghidei.money.Currency._
 import munit._
 
 import java.util.{Currency => JCurrency}
-
 import scala.util.Try
 
 class MoneyMinorSuite extends FunSuite {

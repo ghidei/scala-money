@@ -1,8 +1,9 @@
 package com.ghidei.money
 
+import munit._
+
 import Currency._
 import MoneyMajor._
-import munit._
 
 class CompliationSuite extends FunSuite {
 

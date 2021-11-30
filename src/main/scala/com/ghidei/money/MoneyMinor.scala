@@ -3,8 +3,7 @@ package com.ghidei.money
 import io.circe._
 
 import java.text.NumberFormat
-import java.util.Locale
-import java.util.{Currency => JavaCurrency}
+import java.util.{Currency => JavaCurrency, Locale}
 import scala.math.BigDecimal.RoundingMode
 import scala.math.BigDecimal.RoundingMode.RoundingMode
 import scala.util.Try

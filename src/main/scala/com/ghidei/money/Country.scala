@@ -1,4 +1,5 @@
 package com.ghidei.money
+
 import com.ghidei.money.Country._
 
 /**
