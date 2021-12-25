@@ -39,4 +39,14 @@ class ConversionSuite extends FunSuite {
     assertEquals(minorMisc.toMajor, MoneyMajor.unsafeFromString(5.90, "EUR"))
   }
 
+  test("MoneyMajor#toMisc") {
+    val majorSek = MoneyMajor.SEK(540)
+    assertEquals(majorSek.toMisc, MoneyMajor.unsafeFromString(540, "SEK"))
+  }
+
+  test("MoneyMinor#toMisc") {
+    val minorSek = MoneyMinor.SEK(540)
+    assertEquals(minorSek.toMisc, MoneyMinor.unsafeFromString(540, "SEK"))
+  }
+
 }
