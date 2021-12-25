@@ -199,6 +199,9 @@ object MoneyMinor {
       MoneyMajor(majorAmount, self.currency)
     }
 
+    def toMisc: MoneyMinor[Currency.Misc] =
+      MoneyMinor(self.amount, self.currency.toJavaCurrency)
+
   }
 
   implicit class MinorUnitSekSyntax(private val self: MoneyMinor[Currency.Sek]) {

@@ -201,6 +201,9 @@ object MoneyMajor {
         )
     }
 
+    def toMisc: MoneyMajor[Misc] =
+      MoneyMajor(self.amount, self.currency.toJavaCurrency)
+
     def readableFormat(country: Country, lang: Language): String = {
       val locale       = new Locale(lang.code, country.code)
       val formatter    = NumberFormat.getCurrencyInstance(locale)
