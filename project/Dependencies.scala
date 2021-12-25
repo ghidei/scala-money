@@ -22,6 +22,4 @@ object Dependencies {
     "org.scalameta" %% "munit" % Versions.MUnit % Test
   )
 
-  lazy val deps = cats ++ circe ++ mUnit
-
 }

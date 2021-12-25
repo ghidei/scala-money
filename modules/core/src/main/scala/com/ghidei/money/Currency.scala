@@ -3,7 +3,6 @@ package com.ghidei.money
 import cats.Show
 import cats.implicits.catsSyntaxEither
 import com.ghidei.money.Currency._
-import io.circe._
 
 import java.util.{Currency => JavaCurrency}
 import scala.util.Try
@@ -35,11 +34,6 @@ sealed trait Currency[A] { self =>
 }
 
 object Currency {
-  implicit def currencyDecoder[A: FromCurrencyCode]: Decoder[Currency[A]] =
-    Decoder[String].emap(s => FromCurrencyCode[A].fromCode(s).left.map(_.getMessage))
-
-  implicit def currencyEncoder[A]: Encoder[Currency[A]] =
-    Encoder[String].contramap(_.code)
 
   implicit def s[A]: Show[Currency[A]] = _.code
 

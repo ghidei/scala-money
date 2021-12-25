@@ -3,7 +3,6 @@ package com.ghidei.money
 import cats.implicits.catsSyntaxEither
 import com.ghidei.money.Currency._
 import com.ghidei.money.CurrencyError._
-import io.circe._
 
 import java.text.NumberFormat
 import java.util.{Currency => JavaCurrency, Locale}
@@ -336,28 +335,6 @@ object MoneyMajor {
         CurrencyError.Mismatch(self.currency.code, that.currency.code)
       )
 
-  }
-
-  val CurrencyField = "currency"
-  val AmountField   = "amount"
-  val UnitField     = "unit"
-  val UnitValue     = "MAJOR"
-
-  implicit def encode[A]: Encoder[MoneyMajor[A]] = { majorAmount =>
-    Json.obj(
-      CurrencyField -> Encoder[Currency[A]].apply(majorAmount.currency),
-      AmountField   -> Json.fromBigDecimal(majorAmount.amount),
-      UnitField     -> Json.fromString(UnitValue)
-    )
-  }
-
-  implicit def decode[A: FromCurrencyCode]: Decoder[MoneyMajor[A]] = { hCursor =>
-    for {
-      amount   <- hCursor.downField(AmountField).as[BigDecimal]
-      currency <- hCursor.downField(CurrencyField).as[Currency[A]]
-      unit     <- hCursor.downField(UnitField).as[String]
-      _        <- Either.cond(unit == UnitValue, (), DecodingFailure(s"Expected unit: $UnitValue, but got: $unit.", Nil))
-    } yield MoneyMajor(amount, currency)
   }
 
 }

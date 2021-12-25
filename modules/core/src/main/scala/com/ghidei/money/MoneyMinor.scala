@@ -1,7 +1,5 @@
 package com.ghidei.money
 
-import io.circe._
-
 import java.text.NumberFormat
 import java.util.{Currency => JavaCurrency, Locale}
 import scala.math.BigDecimal.RoundingMode
@@ -304,28 +302,6 @@ object MoneyMinor {
         CurrencyError.Mismatch(self.currency.code, that.currency.code)
       )
 
-  }
-
-  val CurrencyField = "currency"
-  val AmountField   = "amount"
-  val UnitField     = "unit"
-  val UnitValue     = "MINOR"
-
-  implicit def encode[A]: Encoder[MoneyMinor[A]] = { minorUnit =>
-    Json.obj(
-      CurrencyField -> Encoder[Currency[A]].apply(minorUnit.currency),
-      AmountField   -> Json.fromLong(minorUnit.amount),
-      UnitField     -> Json.fromString(UnitValue)
-    )
-  }
-
-  implicit def decode[A: FromCurrencyCode]: Decoder[MoneyMinor[A]] = { hCursor =>
-    for {
-      amount   <- hCursor.downField(AmountField).as[Long]
-      currency <- hCursor.downField(CurrencyField).as[Currency[A]]
-      unit     <- hCursor.downField(UnitField).as[String]
-      _        <- Either.cond(unit == UnitValue, (), DecodingFailure(s"Expected unit: $UnitValue, but got: $unit.", Nil))
-    } yield MoneyMinor(amount, currency)
   }
 
 }
