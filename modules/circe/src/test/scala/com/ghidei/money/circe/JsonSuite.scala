@@ -1,5 +1,6 @@
 package com.ghidei.money
 
+import com.ghidei.money.circe.implicits._
 import io.circe.parser._
 import io.circe.syntax.EncoderOps
 import io.circe.{Decoder, DecodingFailure, Encoder, Error}
