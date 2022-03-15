@@ -3,14 +3,13 @@ import sbt._
 object Dependencies {
 
   lazy val Versions = new {
-    val Cats  = "2.6.0"
-    val Circe = "0.13.0"
-    val MUnit = "0.7.25"
+    val Cats  = "2.7.0"
+    val Circe = "0.14.1"
+    val MUnit = "0.7.29"
   }
 
   lazy val circe = Seq(
     "io.circe" %% "circe-generic"        % Versions.Circe,
-    "io.circe" %% "circe-generic-extras" % Versions.Circe,
     "io.circe" %% "circe-parser"         % Versions.Circe
   )
 
