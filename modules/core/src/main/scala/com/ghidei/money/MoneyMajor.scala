@@ -42,7 +42,7 @@ import scala.util.Try
  * We express amounts in major units according to the ISO 4217 standard.
  * This representation means that currencies are expressed in the BIGGEST unit.
  * Examples:
- *   USD with 10,03 representing $10 and 3 US CENTS,
+ *   USD with 10,03 representing $$10 and 3 US CENTS,
  *   GBP with 5 representing £5,
  *   EUR with 5 representing €5
  *   SEK with 1,50 representing 1kr and 50 ÖRE.

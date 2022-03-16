@@ -37,7 +37,7 @@ import scala.util.Try
  * We express amounts in minor units according to the ISO 4217 standard.
  * This representation means that currencies are expressed in the SMALLEST unit.
  * Examples:
- *   USD with 1000 representing $10,
+ *   USD with 1000 representing $$10,
  *   GBP with 500 representing £5,
  *   EUR with 50 representing €0.50
  *   SEK with 100 representing 1kr.
