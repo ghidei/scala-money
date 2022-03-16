@@ -6,7 +6,6 @@ import com.ghidei.money.CurrencyError._
 
 import java.text.NumberFormat
 import java.util.{Currency => JavaCurrency, Locale}
-import scala.math.BigDecimal.RoundingMode.RoundingMode
 import scala.util.Try
 
 /**

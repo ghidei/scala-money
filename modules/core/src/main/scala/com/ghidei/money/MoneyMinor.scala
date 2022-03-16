@@ -1,9 +1,6 @@
 package com.ghidei.money
 
-import java.text.NumberFormat
-import java.util.{Currency => JavaCurrency, Locale}
-import scala.math.BigDecimal.RoundingMode
-import scala.math.BigDecimal.RoundingMode.RoundingMode
+import java.util.{Currency => JavaCurrency}
 import scala.util.Try
 
 /**

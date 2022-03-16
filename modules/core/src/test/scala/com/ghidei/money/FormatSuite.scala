@@ -3,8 +3,6 @@ package com.ghidei.money
 import com.ghidei.money.{Country, Language}
 import munit._
 
-import scala.math.BigDecimal.RoundingMode
-
 class FormatSuite extends FunSuite {
 
   test("Readable format for money major SEK") {

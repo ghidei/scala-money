@@ -1,16 +1,7 @@
 package com.ghidei.money.circe
 
-import com.ghidei.money.Currency._
-import com.ghidei.money.CurrencyError._
-import com.ghidei.money.MoneyMajor._
-import com.ghidei.money.MoneyMinor._
-import com.ghidei.money.{Currency, FromCurrencyCode, MoneyMajor, MoneyMinor}
+import com.ghidei.money._
 import io.circe._
-
-import java.text.NumberFormat
-import java.util.{Currency => JavaCurrency, Locale}
-import scala.math.BigDecimal.RoundingMode.RoundingMode
-import scala.util.Try
 
 package object implicits {
 
