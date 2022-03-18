@@ -32,20 +32,22 @@ import scala.util.Try
 /**
  * Follows: https://en.wikipedia.org/wiki/ISO_4217
  *
- * @param amount: The amount in MAJOR units, e.g. Swedish "kr" or US "$".
- * @param currency: The currency of the amount.
+ * @param amount:
+ *   The amount in MAJOR units, e.g. Swedish "kr" or US "$".
+ * @param currency:
+ *   The currency of the amount.
  *
- * The `+` operator will NOT be found on this data type unless explicitly imported by:
- * import com.ghidei.money.MoneyMajor._
- * due to the precedence that the `+` method defined in Scala Predef has.
+ * The `+` operator will NOT be found on this data type unless explicitly
+ * imported by: import com.ghidei.money.MoneyMajor._ due to the precedence that
+ * the `+` method defined in Scala Predef has.
  *
- * We express amounts in major units according to the ISO 4217 standard.
- * This representation means that currencies are expressed in the BIGGEST unit.
+ * We express amounts in major units according to the ISO 4217 standard. This
+ * representation means that currencies are expressed in the BIGGEST unit.
  * Examples:
- *   USD with 10,03 representing $$10 and 3 US CENTS,
- *   GBP with 5 representing £5,
- *   EUR with 5 representing €5
- *   SEK with 1,50 representing 1kr and 50 ÖRE.
+ *   - USD with 10,03 representing $$10 and 3 US CENTS,
+ *   - GBP with 5 representing £5,
+ *   - EUR with 5 representing €5
+ *   - SEK with 1,50 representing 1kr and 50 ÖRE.
  */
 case class MoneyMajor[A](amount: BigDecimal, currency: Currency[A]) { self =>
 
@@ -233,14 +235,15 @@ object MoneyMajor {
 
     /**
      * WARNING: This function can throw a `java.lang.ArithmeticException`.
+     * @throws java.lang.ArithmeticException
      *
-     * This conversion will assume that the amount has max x precision, where
-     * x represents the specific currency's fractional digits.
-     * For SEK, USD and GBP (and most currencies) this number is 2.
+     * This conversion will assume that the amount has max x precision, where x
+     * represents the specific currency's fractional digits. For SEK, USD and
+     * GBP (and most currencies) this number is 2.
      *
      * Example:
-     * ERROR: 5.999 (MoneyMajor) throws an `ArithmeticException`
-     * OK: 5.99 (MoneyMajor) => 599 (MoneyMinor)
+     *   - ERROR: 5.999 (MoneyMajor) throws an `ArithmeticException`
+     *   - OK: 5.99 (MoneyMajor) => 599 (MoneyMinor)
      */
     def unsafeToMinor: MoneyMinor[A] = {
       val minorAmount = BigDecimal(self.amount.underlying.movePointRight(self.currency.fractionalDigits)).toLongExact

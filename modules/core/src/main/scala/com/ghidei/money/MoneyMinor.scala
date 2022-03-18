@@ -27,20 +27,22 @@ import scala.util.Try
 /**
  * Follows: https://en.wikipedia.org/wiki/ISO_4217
  *
- * @param amount: The amount in MINOR units, e.g. Swedish "öre" or US "cents".
- * @param currency: The currency of the amount.
+ * @param amount:
+ *   The amount in MINOR units, e.g. Swedish "öre" or US "cents".
+ * @param currency:
+ *   The currency of the amount.
  *
- * The `+` operator will NOT be found on this data type unless explicitly imported by:
- * import com.ghidei.money.MoneyMinor._
- * due to the precedence that the `+` method defined in Scala Predef has.
+ * The `+` operator will NOT be found on this data type unless explicitly
+ * imported by: import com.ghidei.money.MoneyMinor._ due to the precedence that
+ * the `+` method defined in Scala Predef has.
  *
- * We express amounts in minor units according to the ISO 4217 standard.
- * This representation means that currencies are expressed in the SMALLEST unit.
+ * We express amounts in minor units according to the ISO 4217 standard. This
+ * representation means that currencies are expressed in the SMALLEST unit.
  * Examples:
- *   USD with 1000 representing $$10,
- *   GBP with 500 representing £5,
- *   EUR with 50 representing €0.50
- *   SEK with 100 representing 1kr.
+ *   - USD with 1000 representing $$10,
+ *   - GBP with 500 representing £5,
+ *   - EUR with 50 representing €0.50
+ *   - SEK with 100 representing 1kr.
  */
 case class MoneyMinor[A](amount: Long, currency: Currency[A]) { self =>
 

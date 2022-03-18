@@ -24,8 +24,8 @@ package com.ghidei.money
 import com.ghidei.money.Language._
 
 /**
- * An ISO 639 alpha-2 language code.
- * Follows: https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
+ * An ISO 639 alpha-2 language code. Follows:
+ * https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
  */
 sealed trait Language { self =>
   def code: String = self match {
