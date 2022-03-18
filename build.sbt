@@ -17,12 +17,16 @@ lazy val root = tlCrossRootProject.aggregate(core, circe)
 lazy val core = (project in file("./modules/core/."))
   .settings(
     name := "core",
+    scalaVersion := Scala213,
+    scalacOptions := CompilerSettings.master,
     libraryDependencies ++= (Dependencies.cats ++ Dependencies.mUnit)
   )
 
 lazy val circe = (project in file("./modules/circe/."))
   .settings(
     name := "circe",
+    scalaVersion := Scala213,
+    scalacOptions := CompilerSettings.master,
     libraryDependencies ++= (Dependencies.circe ++ Dependencies.mUnit)
   )
   .dependsOn(core)
