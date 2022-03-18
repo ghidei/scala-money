@@ -263,7 +263,7 @@ object MoneyMajor {
 
   implicit class MajorUnitMiscSyntax[A](private val self: MoneyMajor[Currency.Misc]) {
 
-    def refine[A](to: Currency[A]): Either[CurrencyError, MoneyMajor[A]] = Either.cond(
+    def refine[B](to: Currency[B]): Either[CurrencyError, MoneyMajor[B]] = Either.cond(
       self.currency.code == to.code,
       MoneyMajor(self.amount, to),
       CurrencyError.Mismatch(self.currency.code, to.code)

@@ -49,6 +49,11 @@ class MoneyMinorSuite extends FunSuite {
     assertEquals(MoneyMinor.unsafeFromString(300, "EUR"), new MoneyMinor(300, Misc.unsafeFromString("EUR")))
   }
 
+  test("refine") {
+    assertEquals(m3.refine(Currency.SEK), Right(MoneyMinor.SEK(300)))
+    assertEquals(m3.refine(Currency.EUR), Left(CurrencyError.Mismatch("SEK", "EUR")))
+  }
+
   test("+") {
     assertEquals(m1 + m2, MoneyMinor.SEK(300))
     assertEquals(m1 + m3, Right(MoneyMinor.SEK(400)))
@@ -182,6 +187,11 @@ class MoneyMajorSuite extends FunSuite {
     assertEquals(MoneyMajor(300, JCurrency.getInstance("EUR")), new MoneyMajor(300, Misc.unsafeFromString("EUR")))
     assertEquals(MoneyMajor.fromString(300, "EUR"), Try(new MoneyMajor(300, Misc.unsafeFromString("EUR"))))
     assertEquals(MoneyMajor.unsafeFromString(300, "EUR"), new MoneyMajor(300, Misc.unsafeFromString("EUR")))
+  }
+
+  test("refine") {
+    assertEquals(m3.refine(Currency.SEK), Right(MoneyMajor.SEK(300)))
+    assertEquals(m3.refine(Currency.EUR), Left(CurrencyError.Mismatch("SEK", "EUR")))
   }
 
   test("+") {

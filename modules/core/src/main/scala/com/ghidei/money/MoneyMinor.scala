@@ -234,6 +234,12 @@ object MoneyMinor {
 
   implicit class MinorUnitMiscSyntax[A](private val self: MoneyMinor[Currency.Misc]) {
 
+    def refine[B](to: Currency[B]): Either[CurrencyError, MoneyMinor[B]] = Either.cond(
+      self.currency.code == to.code,
+      MoneyMinor(self.amount, to),
+      CurrencyError.Mismatch(self.currency.code, to.code)
+    )
+
     def +(that: MoneyMinor[A]): Either[CurrencyError, MoneyMinor[A]] = Either.cond(
       self.currency.code == that.currency.code,
       MoneyMinor(self.amount + that.amount, that.currency),
