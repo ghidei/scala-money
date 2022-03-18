@@ -4,7 +4,7 @@ object Dependencies {
 
   lazy val Versions = new {
     val Cats  = "2.7.0"
-    val Circe = "0.14.1"
+    val Circe = "0.15.0-M1"
     val MUnit = "0.7.29"
   }
 
